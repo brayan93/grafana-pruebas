@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1.text-info= title
+  p Welcome to #{title}
+  .row
+    h2.text-center GPS
+    .col-12
+      .group-btn
+        a.btn.btn-primary(href="/influx/list") Registros
+        a.btn.btn-primary(href="/influx/form") Insertar
+  .row
+    h2.text-center Battery status
+    .col-12
+      .group-btn
+        a.btn.btn-primary(href="/battery/batteryRegister") Registros
+        a.btn.btn-primary(href="/battery/form") Insertar
+  .row
+    h2.text-center LED
+    .col-12
+      .group-btn
+        a.btn.btn-primary(href="/led/ledList") Registros
+        a.btn.btn-primary(href="/led/ledForm") Insertar
+  
+  .row
+    h2.text-center Speed
+    .col-12
+      .group-btn
+        a.btn.btn-primary(href="/speed/speedRegister") Registros
+        a.btn.btn-primary(href="/speed/form") Insertar
+
+  .row
+    h2.text-center LED Status
+    .col-12
+      .group-btn
+        a.btn.btn-primary(href="/ledStatus/list") Registros
+        a.btn.btn-primary(href="/ledStatus/form") Insertar

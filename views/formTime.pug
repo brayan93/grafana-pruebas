@@ -1,0 +1,16 @@
+extends layout
+
+
+block content
+    h1.text-info #{title}
+    .row
+        .col-12
+            form(action="/influx/form", method="post")
+                .input-group
+                    label(for="longitude")
+                    input.form-control(type="text" name="longitude" placeholder="Logitud")
+                .input-group
+                    label(for="latitude")
+                    input.form-control(type="text" name="latitude" placeholder="Latitud")
+                .input-group
+                    input.btn.btn-success(type="submit" value="Agregar")

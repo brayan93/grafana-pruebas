@@ -1,0 +1,25 @@
+extends layout
+
+
+block content
+    h1.text-info #{title}
+    .row
+        .col-12
+            table.table
+                if registers
+                    if registers.length > 0
+                        tr
+                            th Level
+                        each reg in registers
+                            tr
+                                td #{reg.level}
+                    else
+                        tr
+                            td No se encontraron registros
+                else
+                    tr
+                        td No se encontraron registros
+        .col-12
+            .btn-group
+                a.btn.btn-warning(href="/") Regresar
+                a.btn.btn-info(href="/led/form") Nuevo Registro
