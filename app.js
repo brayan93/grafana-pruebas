@@ -19,9 +19,11 @@ var ledRouter = require('./routes/led');
 var speedRouter = require('./routes/speed');
 var ledStatusRouter = require('./routes/led-status');
 var storageRouter = require('./routes/storage');
+var publishMQTTRouter = require('./routes/mqtt/publish');
 
 // MQTT
 const mqtt = require('mqtt');
+const client = require('./config/client-mqtt');
 
 // VALIDATE RESPONSE MQTT CLIENT
 const utils = require('./utils/sendDataBase');
@@ -54,6 +56,7 @@ app.use('/led', ledRouter);
 app.use('/speed', speedRouter);
 app.use('/ledStatus', ledStatusRouter);
 app.use('/storage', storageRouter);
+app.use('/mqtt/publish', publishMQTTRouter);
 
 influxDB.getDatabaseNames()
     .then(names => {
@@ -83,12 +86,12 @@ app.use((req, res, next) => {
     return next();
 });
 
-const client = mqtt.connect('mqtt://167.99.235.83', {
-// const client = mqtt.connect('mqtt://broker.mqttdashboard.com', {
-    clientId: 'clientId-WD657Kh3zm',
-    clean: true,
-    port: 1883
-});
+// const client = mqtt.connect('mqtt://167.99.235.83', {
+// // const client = mqtt.connect('mqtt://broker.mqttdashboard.com', {
+//     clientId: 'clientId-WD657Kh3zm',
+//     clean: true,
+//     port: 1883
+// });
 client.on('connect', function () {
     client.subscribe('MOWIN2/feeds/#');
     // client.subscribe('MOWIN/feeds/#');
